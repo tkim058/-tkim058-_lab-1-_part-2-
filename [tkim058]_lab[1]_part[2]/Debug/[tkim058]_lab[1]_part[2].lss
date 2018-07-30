@@ -3,29 +3,29 @@
 
 Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
-  0 .data         00000000  00800100  00800100  00000174  2**0
+  0 .data         00000000  00800100  00800100  00000178  2**0
                   CONTENTS, ALLOC, LOAD, DATA
-  1 .text         00000120  00000000  00000000  00000054  2**1
+  1 .text         00000124  00000000  00000000  00000054  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  2 .comment      00000030  00000000  00000000  00000174  2**0
+  2 .comment      00000030  00000000  00000000  00000178  2**0
                   CONTENTS, READONLY
-  3 .note.gnu.avr.deviceinfo 00000040  00000000  00000000  000001a4  2**2
+  3 .note.gnu.avr.deviceinfo 00000040  00000000  00000000  000001a8  2**2
                   CONTENTS, READONLY
-  4 .debug_aranges 00000020  00000000  00000000  000001e4  2**0
+  4 .debug_aranges 00000020  00000000  00000000  000001e8  2**0
                   CONTENTS, READONLY, DEBUGGING
-  5 .debug_info   00000838  00000000  00000000  00000204  2**0
+  5 .debug_info   00000838  00000000  00000000  00000208  2**0
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_abbrev 0000079d  00000000  00000000  00000a3c  2**0
+  6 .debug_abbrev 0000079d  00000000  00000000  00000a40  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_line   000002bc  00000000  00000000  000011d9  2**0
+  7 .debug_line   000002bc  00000000  00000000  000011dd  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_frame  00000024  00000000  00000000  00001498  2**2
+  8 .debug_frame  00000024  00000000  00000000  0000149c  2**2
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_str    00000402  00000000  00000000  000014bc  2**0
+  9 .debug_str    00000402  00000000  00000000  000014c0  2**0
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_loc    000000ac  00000000  00000000  000018be  2**0
+ 10 .debug_loc    000000ac  00000000  00000000  000018c2  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_ranges 00000010  00000000  00000000  0000196a  2**0
+ 11 .debug_ranges 00000010  00000000  00000000  0000196e  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -110,7 +110,7 @@ Disassembly of section .text:
   94:	de bf       	out	0x3e, r29	; 62
   96:	cd bf       	out	0x3d, r28	; 61
   98:	02 d0       	rcall	.+4      	; 0x9e <main>
-  9a:	40 c0       	rjmp	.+128    	; 0x11c <_exit>
+  9a:	42 c0       	rjmp	.+132    	; 0x120 <_exit>
 
 0000009c <__bad_interrupt>:
   9c:	b1 cf       	rjmp	.-158    	; 0x0 <__vectors>
@@ -147,7 +147,7 @@ int main(void)
 			cntavail = 0x02;
   ac:	42 e0       	ldi	r20, 0x02	; 2
 		}
-		else if((p1 == 0x07) || (p1 == 0x0B) || (p1 == 0x0E))
+		else if((p1 == 0x07) || (p1 == 0x0B) || (p1 == 0x0E) || (p1 == 0x0D))
 		{
 			cntavail = 0x01;
   ae:	51 e0       	ldi	r21, 0x01	; 1
@@ -168,92 +168,94 @@ int main(void)
   b6:	9f ef       	ldi	r25, 0xFF	; 255
   b8:	98 0f       	add	r25, r24
   ba:	92 30       	cpi	r25, 0x02	; 2
-  bc:	d0 f0       	brcs	.+52     	; 0xf2 <main+0x54>
+  bc:	e0 f0       	brcs	.+56     	; 0xf6 <main+0x58>
   be:	84 30       	cpi	r24, 0x04	; 4
-  c0:	d1 f0       	breq	.+52     	; 0xf6 <main+0x58>
+  c0:	e1 f0       	breq	.+56     	; 0xfa <main+0x5c>
   c2:	88 30       	cpi	r24, 0x08	; 8
-  c4:	d1 f0       	breq	.+52     	; 0xfa <main+0x5c>
+  c4:	e1 f0       	breq	.+56     	; 0xfe <main+0x60>
 		{
 			cntavail = 0x03;
 		}
 		else if((p1 == 0x03) || (p1 == 0x05) || (p1 == 0x06) || (p1 == 0x09) || (p1 == 0x0A) || (p1 == 0x0C))
   c6:	83 30       	cpi	r24, 0x03	; 3
-  c8:	d1 f0       	breq	.+52     	; 0xfe <main+0x60>
+  c8:	e1 f0       	breq	.+56     	; 0x102 <main+0x64>
   ca:	9b ef       	ldi	r25, 0xFB	; 251
   cc:	98 0f       	add	r25, r24
   ce:	92 30       	cpi	r25, 0x02	; 2
-  d0:	c0 f0       	brcs	.+48     	; 0x102 <main+0x64>
+  d0:	d0 f0       	brcs	.+52     	; 0x106 <main+0x68>
   d2:	97 ef       	ldi	r25, 0xF7	; 247
   d4:	98 0f       	add	r25, r24
   d6:	92 30       	cpi	r25, 0x02	; 2
-  d8:	b0 f0       	brcs	.+44     	; 0x106 <main+0x68>
+  d8:	c0 f0       	brcs	.+48     	; 0x10a <main+0x6c>
   da:	8c 30       	cpi	r24, 0x0C	; 12
-  dc:	b1 f0       	breq	.+44     	; 0x10a <main+0x6c>
+  dc:	c1 f0       	breq	.+48     	; 0x10e <main+0x70>
 		{
 			cntavail = 0x02;
 		}
-		else if((p1 == 0x07) || (p1 == 0x0B) || (p1 == 0x0E))
+		else if((p1 == 0x07) || (p1 == 0x0B) || (p1 == 0x0E) || (p1 == 0x0D))
   de:	87 30       	cpi	r24, 0x07	; 7
-  e0:	b1 f0       	breq	.+44     	; 0x10e <main+0x70>
+  e0:	c1 f0       	breq	.+48     	; 0x112 <main+0x74>
   e2:	8b 30       	cpi	r24, 0x0B	; 11
-  e4:	b1 f0       	breq	.+44     	; 0x112 <main+0x74>
-  e6:	8e 30       	cpi	r24, 0x0E	; 14
-  e8:	b1 f0       	breq	.+44     	; 0x116 <main+0x78>
+  e4:	c1 f0       	breq	.+48     	; 0x116 <main+0x78>
+  e6:	93 ef       	ldi	r25, 0xF3	; 243
+  e8:	98 0f       	add	r25, r24
+  ea:	92 30       	cpi	r25, 0x02	; 2
+  ec:	b0 f0       	brcs	.+44     	; 0x11a <main+0x7c>
 		{
 			cntavail = 0x01;
 		}
 		else if(p1 == 0x0F)
-  ea:	8f 30       	cpi	r24, 0x0F	; 15
-  ec:	a9 f4       	brne	.+42     	; 0x118 <main+0x7a>
+  ee:	8f 30       	cpi	r24, 0x0F	; 15
+  f0:	a9 f4       	brne	.+42     	; 0x11c <main+0x7e>
 		{
 			cntavail = 0x00;
-  ee:	26 2f       	mov	r18, r22
-  f0:	13 c0       	rjmp	.+38     	; 0x118 <main+0x7a>
+  f2:	26 2f       	mov	r18, r22
+  f4:	13 c0       	rjmp	.+38     	; 0x11c <main+0x7e>
 	{
 		
 		p1 = PINA & 0x0F;
 		if ((p1 == 0x01) || (p1 == 0x02) || (p1 == 0x04) || (p1 == 0x08))
 		{
 			cntavail = 0x03;
-  f2:	23 2f       	mov	r18, r19
-  f4:	11 c0       	rjmp	.+34     	; 0x118 <main+0x7a>
   f6:	23 2f       	mov	r18, r19
-  f8:	0f c0       	rjmp	.+30     	; 0x118 <main+0x7a>
+  f8:	11 c0       	rjmp	.+34     	; 0x11c <main+0x7e>
   fa:	23 2f       	mov	r18, r19
-  fc:	0d c0       	rjmp	.+26     	; 0x118 <main+0x7a>
+  fc:	0f c0       	rjmp	.+30     	; 0x11c <main+0x7e>
+  fe:	23 2f       	mov	r18, r19
+ 100:	0d c0       	rjmp	.+26     	; 0x11c <main+0x7e>
 		}
 		else if((p1 == 0x03) || (p1 == 0x05) || (p1 == 0x06) || (p1 == 0x09) || (p1 == 0x0A) || (p1 == 0x0C))
 		{
 			cntavail = 0x02;
-  fe:	24 2f       	mov	r18, r20
- 100:	0b c0       	rjmp	.+22     	; 0x118 <main+0x7a>
  102:	24 2f       	mov	r18, r20
- 104:	09 c0       	rjmp	.+18     	; 0x118 <main+0x7a>
+ 104:	0b c0       	rjmp	.+22     	; 0x11c <main+0x7e>
  106:	24 2f       	mov	r18, r20
- 108:	07 c0       	rjmp	.+14     	; 0x118 <main+0x7a>
+ 108:	09 c0       	rjmp	.+18     	; 0x11c <main+0x7e>
  10a:	24 2f       	mov	r18, r20
- 10c:	05 c0       	rjmp	.+10     	; 0x118 <main+0x7a>
+ 10c:	07 c0       	rjmp	.+14     	; 0x11c <main+0x7e>
+ 10e:	24 2f       	mov	r18, r20
+ 110:	05 c0       	rjmp	.+10     	; 0x11c <main+0x7e>
 		}
-		else if((p1 == 0x07) || (p1 == 0x0B) || (p1 == 0x0E))
+		else if((p1 == 0x07) || (p1 == 0x0B) || (p1 == 0x0E) || (p1 == 0x0D))
 		{
 			cntavail = 0x01;
- 10e:	25 2f       	mov	r18, r21
- 110:	03 c0       	rjmp	.+6      	; 0x118 <main+0x7a>
  112:	25 2f       	mov	r18, r21
- 114:	01 c0       	rjmp	.+2      	; 0x118 <main+0x7a>
+ 114:	03 c0       	rjmp	.+6      	; 0x11c <main+0x7e>
  116:	25 2f       	mov	r18, r21
+ 118:	01 c0       	rjmp	.+2      	; 0x11c <main+0x7e>
+ 11a:	25 2f       	mov	r18, r21
 		}
 		else if(p1 == 0x0F)
 		{
 			cntavail = 0x00;
 		}
 		PORTC = cntavail;
- 118:	28 b9       	out	0x08, r18	; 8
+ 11c:	28 b9       	out	0x08, r18	; 8
 	}
- 11a:	cb cf       	rjmp	.-106    	; 0xb2 <main+0x14>
+ 11e:	c9 cf       	rjmp	.-110    	; 0xb2 <main+0x14>
 
-0000011c <_exit>:
- 11c:	f8 94       	cli
+00000120 <_exit>:
+ 120:	f8 94       	cli
 
-0000011e <__stop_program>:
- 11e:	ff cf       	rjmp	.-2      	; 0x11e <__stop_program>
+00000122 <__stop_program>:
+ 122:	ff cf       	rjmp	.-2      	; 0x122 <__stop_program>

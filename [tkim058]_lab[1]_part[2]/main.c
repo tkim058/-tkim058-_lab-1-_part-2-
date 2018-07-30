@@ -28,7 +28,7 @@ int main(void)
 		{
 			cntavail = 0x02;
 		}
-		else if((p1 == 0x07) || (p1 == 0x0B) || (p1 == 0x0E))
+		else if((p1 == 0x07) || (p1 == 0x0B) || (p1 == 0x0E) || (p1 == 0x0D))
 		{
 			cntavail = 0x01;
 		}
