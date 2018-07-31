@@ -1,9 +1,14 @@
 /*
  * [tkim058]_lab[1]_part[2].c
- *
- * Created: 7/30/2018 2:36:33 PM
- * Author : ucrcse
- */ 
+ *	Partner(s) Name & E-mail: No partner yet
+ *	Lab Section: B01
+ *	Assignment: Lab #1  Exercise #2 
+ *	Exercise Description: [Return available spaces]
+ *	
+ *	I acknowledge all content contained herein, excluding template or example
+ *	code, is my own original work.
+ */
+
 
 #include <avr/io.h>
 
